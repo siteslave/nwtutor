@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumX Template</title>
+
+        <link href="../vendor/lumx/dist/lumx.css" rel="stylesheet">
+        <link href="../vendor/mdi/css/materialdesignicons.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
+
+        <script src="../vendor/jquery/dist/jquery.js"></script>
+        <script src="../vendor/velocity/velocity.js"></script>
+        <script src="../vendor/moment/min/moment-with-locales.js"></script>
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/lumx/dist/lumx.js"></script>
+
+    </head>
+    <body ng-app="app">
+
+        <div class="card p+" ng-controller="WelcomeCtrl">
+            <div flex-container="row">
+                <div flex-item="3">
+                    <!-- Datepicker -->
+                    <lx-date-picker model="datepicker.date" label="Pick a date" locale="th" allow-clear="true"></lx-date-picker>
+                    <!-- /Datepicker -->
+                </div>
+                <div flex-item="3">
+                     <br>
+                    <lx-dropdown position="left" from-top="true">
+                        <button class="btn btn--m btn--black btn--icon" lx-ripple lx-dropdown-toggle>
+                            <i class="mdi mdi-dots-vertical"></i>
+                        </button>
+
+                        <lx-dropdown-menu>
+                            <ul>
+                                <li>
+                                    <a class="dropdown-link dropdown-link--is-large">
+                                        <i class="mdi mdi-eye"></i>
+                                        <span>Preview</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-link dropdown-link--is-large">
+                                        <i class="mdi mdi-account-plus"></i>
+                                        <span>Share</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-link dropdown-link--is-large">
+                                        <i class="mdi mdi-link"></i>
+                                        <span>Get link</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-link dropdown-link--is-large">
+                                        <i class="mdi mdi-content-copy"></i>
+                                        <span>Make a copy</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-link dropdown-link--is-large">
+                                        <i class="mdi mdi-download"></i>
+                                        <span>Download</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-link dropdown-link--is-large">
+                                        <i class="mdi mdi-delete"></i>
+                                        <span>Remove</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </lx-dropdown-menu>
+                    </lx-dropdown>
+                </div>
+            </div>
+
+            <div class="card mt++">
+                <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" z-depth="1">
+                    <lx-tab heading="Lorem Ipsum 1">
+                        <p class="p+">Lorem Ipsum Content 1</p>
+                    </lx-tab>
+
+                    <lx-tab heading="Lorem Ipsum 2">
+                        <p class="p+">Lorem Ipsum Content 2</p>
+                    </lx-tab>
+
+                    <lx-tab heading="Lorem Ipsum 3">
+                        <p class="p+">Lorem Ipsum Content 3</p>
+                    </lx-tab>
+                </lx-tabs>
+            </div>
+
+            <div class="mt++">
+                <div flex-item>
+                    <form>
+                        <lx-text-field label="First and last name" fixed-label="true" icon="account">
+                            <input type="text" ng-model="textFields.fixedFirstName">
+                        </lx-text-field>
+
+                        <lx-text-field label="Phone number" fixed-label="true" icon="phone">
+                            <input type="text" ng-model="textFields.fixedLastName">
+                        </lx-text-field>
+
+                        <lx-text-field label="Email address" fixed-label="true" icon="email">
+                            <input type="email" ng-model="textFields.fixedEmail">
+                        </lx-text-field>
+
+                        <lx-text-field label="Location" fixed-label="true" icon="city">
+                            <input type="text" ng-model="textFields.fixedAdress">
+                        </lx-text-field>
+                    </form>
+                </div>
+            </div>
+
+            <br><br>
+            <!-- dialog -->
+
+            <button class="btn btn--l btn--green btn--raised" ng-click="openDialog()">Open Modal</button>
+            <!-- Start dialog -->
+            <lx-dialog class="dialog dialog--l" id="mdlHello" auto-close="true" onclose="closingDialog()">
+                <div class="dialog__header">
+                    <div class="toolbar bgc-light-blue-500 pl++">
+                        <span class="toolbar__label tc-white fs-title">
+                            Lorem Ipsum
+                        </span>
+
+                        <div class="toolbar__right">
+                            <button class="btn btn--l btn--white btn--icon" lx-ripple lx-dialog-close>
+                                <i class="mdi mdi-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dialog__content">
+                    <div class="p+">
+                        Hello modal
+                    </div>
+                </div>
+
+                <div class="dialog__actions">
+                    <button class="btn btn--m btn--black btn--raised" lx-ripple lx-dialog-close>Close</button>
+                    <button class="btn btn--m btn--green btn--raised" lx-ripple>Save</button>
+                </div>
+            </lx-dialog>
+            <!-- End dialog -->
+        </div>
+
+        <script>
+            angular.module('app', ['lumx'])
+                .controller('WelcomeCtrl', function ($scope, LxDialogService) {
+                    $scope.openDialog = function () {
+                        LxDialogService.open('mdlHello');
+                    }
+                });
+        </script>
+  </body>
+</html>

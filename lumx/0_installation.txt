@@ -1,0 +1,3 @@
+Install via bower
+
+    # bower install lumx --save

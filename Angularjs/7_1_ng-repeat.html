@@ -1,0 +1,53 @@
+<html ng-app="app">
+
+    <head>
+        <title>Directive</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="WelcomeCtrl">
+
+            <ul>
+                <li ng-repeat="f in fruits">{{ f }}</li>
+            </ul>
+
+            <!-- Array with object -->
+            <input type="text" ng-model="query" placeholder="Search...">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="a in animals | filter: query">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ a.name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <script>
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope) {
+                    // Array
+                    $scope.fruits = ['Apple', 'Banana', 'Pie Apple'];
+
+                    // Array with ojbect
+                    $scope.animals = [
+                        { id: 1, name: 'Cat' },
+                        { id: 2, name: 'Rat' },
+                        { id: 3, name: 'Bat' },
+                        { id: 4, name: 'Dog' }
+                    ];
+                });
+
+        </script>
+    </body>
+
+</html>

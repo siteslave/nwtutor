@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumX Template</title>
+
+        <link href="../vendor/lumx/dist/lumx.css" rel="stylesheet">
+        <link href="../vendor/mdi/css/materialdesignicons.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+        <script src="../vendor/jquery/dist/jquery.js"></script>
+        <script src="../vendor/velocity/velocity.js"></script>
+        <script src="../vendor/moment/min/moment-with-locales.js"></script>
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/lumx/dist/lumx.js"></script>
+        <!-- Google map -->
+        <script src="../vendor/angular-ui-utils/ui-utils.min.js"></script>
+        <script src="../vendor/angular-ui-map/ui-map.js"></script>
+
+        <!-- <script src='http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en&v=3.17'></script> -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=th"></script>
+        <style>
+            .map-canvas { height: 400px; }
+        </style>
+    </head>
+    <body ng-controller="WelcomeCtrl">
+
+        <div flex-container="row" flex-gutter="24">
+            <div flex-item>
+                <lx-text-field label="Latitude" fixed-label="true" icon="map-marker-radius">
+                    <input type="text" ng-model="lat">
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Longitude" fixed-label="true" icon="map-marker-radius">
+                    <input type="text" ng-model="lng">
+                </lx-text-field>
+            </div>
+            <div flex-item="3">
+                <button class="btn btn--l btn--raised btn--green">Save</button>
+            </div>
+        </div>
+        <div class="card p+">
+            <div ui-map="myMap" ui-options="mapOptions"
+                ui-event="{'map-click': 'addMarker($event, $params)'}"
+                class="map-canvas"></div>
+        </div>
+
+        <script>
+
+            // Main angular module
+            angular.module('app', ['lumx', 'ui.map'])
+                .controller('WelcomeCtrl', function ($scope) {
+
+                    $scope.mapOptions = {
+                          center: new google.maps.LatLng(16.428684605051323, 102.84452687715044),
+                          zoom: 15,
+                          mapTypeId: google.maps.MapTypeId.HYBRID
+                        };
+
+                    $scope.markers = [];
+
+                    $scope.addMarker = function (event, params) {
+                        //console.log(params[0].latLng);
+                        $scope.lat = params[0].latLng.A;
+                        $scope.lng = params[0].latLng.F;
+
+                        // clear map
+                        $scope.clearMarker();
+                        // set marker
+                        $scope.markers.push(new google.maps.Marker({
+                            map: $scope.myMap,
+                            position: params[0].latLng,
+                            animation: google.maps.Animation.DROP
+                        }));
+                    };
+
+                    $scope.doClearMarker = function (map) {
+                        for (var i = 0; i < $scope.markers.length; i++) {
+                            $scope.markers[i].setMap(map);
+                        }
+                    };
+
+                    $scope.clearMarker = function () {
+                        $scope.doClearMarker(null);
+                    };
+                });
+
+        </script>
+  </body>
+</html>

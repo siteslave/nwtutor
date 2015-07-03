@@ -1,0 +1,39 @@
+<html ng-app="app">
+
+    <head>
+        <title>Directive</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+
+        <style>
+            .green { background-color: green;}
+            .red { background-color: red; }
+            .blue { background-color: blue; }
+        </style>
+    </head>
+
+    <body>
+        <div ng-controller="WelcomeCtrl">
+            <input type="text" ng-model="myClass" placeholder="class...">
+            <button ng-class="myClass">Welcome AngularJS</button>
+            <!-- ng-class="{ class: exp }" -->
+            <button ng-class="{ 'red': danger }" ng-click="clearClass()">
+                Class with expression
+                </button>
+        </div>
+
+        <script>
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope) {
+
+                    $scope.danger = true;
+
+                    $scope.clearClass = function () {
+                        $scope.danger = false;
+                    }
+                });
+
+        </script>
+    </body>
+
+</html>

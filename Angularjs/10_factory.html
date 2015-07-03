@@ -1,0 +1,42 @@
+<html ng-app="app">
+
+    <head>
+        <title>Routing</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+        <h1>My Application</h1>
+        <div ng-controller="WelcomeCtrl">
+            <input type="text" ng-model="firstName">
+            <input type="text" ng-model="lastName">
+            <button ng-click="showName()">Show fullname</button>
+        </div>
+
+        <script>
+
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope, WelcomeServ) {
+                    $scope.showName = function () {
+                        // Show name
+                        var fullname = WelcomeServ.getFullname($scope.firstName, $scope.lastName);
+
+                        alert(fullname);
+                    }
+                })
+
+                // factory(factoryName, function () { ... })
+
+                .factory('WelcomeServ', function () {
+                    return {
+                        getFullname: function (firstName, lastName) {
+                            return firstName + ' ' + lastName;
+                        }
+                    }
+                })
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumX Template</title>
+
+        <link href="../vendor/lumx/dist/lumx.css" rel="stylesheet">
+        <link href="../vendor/mdi/css/materialdesignicons.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+        <script src="../vendor/jquery/dist/jquery.js"></script>
+        <script src="../vendor/velocity/velocity.js"></script>
+        <script src="../vendor/moment/min/moment-with-locales.js"></script>
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/lumx/dist/lumx.js"></script>
+
+    </head>
+    <body ng-app="app">
+
+        <div class="card p+">
+            <div class="tc-white-1" flex-container="row">
+                <div flex-item="2" flex-item-order="1"><div class="p+ bgc-red-500">[flex-item="2"]</div></div>
+                <div flex-item="6" flex-item-order="3"><div class="p+ bgc-blue-500">[flex-item="6"]</div></div>
+                <div flex-item="4" flex-item-order="2"><div class="p+ bgc-green-500">[flex-item="4"]</div></div>
+            </div>
+
+            <div class="tc-white-1 mt++" flex-container="column" flex-align="space-between center" style="height: 200px">
+                <div><div class="p+ bgc-red-500">Flex item</div></div>
+                <div><div class="p+ bgc-blue-500">Flex item</div></div>
+                <div><div class="p+ bgc-green-500">Flex item</div></div>
+            </div>
+
+            <div class="tc-white-1 mt++" flex-container="row" flex-gutter="24">
+                <div flex-item="2"><div class="p+ bgc-red-500">[flex-item="2"]</div></div>
+                <div flex-item="6"><div class="p+ bgc-blue-500">[flex-item="6"]</div></div>
+                <div flex-item="4"><div class="p+ bgc-green-500">[flex-item="4"]</div></div>
+            </div>
+        </div>
+
+        <script>
+            // Main angular module
+            angular.module('app', ['lumx']);
+
+        </script>
+  </body>
+</html>

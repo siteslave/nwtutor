@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumX Template</title>
+
+        <link href="../vendor/lumx/dist/lumx.css" rel="stylesheet">
+        <link href="../vendor/mdi/css/materialdesignicons.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
+
+        <script src="../vendor/jquery/dist/jquery.js"></script>
+        <script src="../vendor/velocity/velocity.js"></script>
+        <script src="../vendor/moment/min/moment-with-locales.js"></script>
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/lumx/dist/lumx.js"></script>
+
+    </head>
+    <body ng-app="app">
+
+        <div class="card p+" ng-controller="WelcomeCtrl">
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('simple')" lx-ripple>Simple notification</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('sticky')" lx-ripple>Sticky notification</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('icon')" lx-ripple>Notification with icon</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('color')" lx-ripple>Notification with colored icon</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('info')" lx-ripple>Info notification</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('success')" lx-ripple>Success notification</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('warning')" lx-ripple>Warning notification</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="notify('error')" lx-ripple>Error notification</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="alert()" lx-ripple>Alert box</button>
+            <button class="btn btn--m btn--black btn--flat" ng-click="confirm()" lx-ripple>Confirm box</button>
+        </div>
+
+        <script>
+            angular.module('app', ['lumx'])
+                .controller('WelcomeCtrl', function ($scope, LxNotificationService) {
+                    $scope.notify = function(type)
+                    {
+                        if (type === 'simple')
+                        {
+                            LxNotificationService.notify('Lorem Ipsum');
+                        }
+                        else if (type === 'sticky')
+                        {
+                            LxNotificationService.notify('Lorem Ipsum', undefined, true);
+                        }
+                        else if (type === 'icon')
+                        {
+                            LxNotificationService.notify('Lorem Ipsum', 'android');
+                        }
+                        else if (type === 'color')
+                        {
+                            LxNotificationService.notify('Lorem Ipsum', undefined, false, 'grey');
+                        }
+                        else if (type === 'info')
+                        {
+                            LxNotificationService.info('Lorem Ipsum');
+                        }
+                        else if (type === 'success')
+                        {
+                            LxNotificationService.success('Lorem Ipsum');
+                        }
+                        else if (type === 'warning')
+                        {
+                            LxNotificationService.warning('Lorem Ipsum');
+                        }
+                        else if (type === 'error')
+                        {
+                            LxNotificationService.error('Lorem Ipsum');
+                        }
+                    };
+
+                    $scope.confirm = function()
+                    {
+                        LxNotificationService.confirm('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet urna quis nisi sodales semper pharetra eu augue.', { cancel:'Disagree', ok:'Agree' }, function(answer)
+                        {
+                            console.log(answer);
+                        });
+                    };
+
+                    $scope.alert = function () {
+                        LxNotificationService.alert('Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet urna quis nisi sodales semper pharetra eu augue.', 'Ok', function(answer)
+                        {
+                            console.log(answer);
+                        });
+                    }
+                });
+        </script>
+  </body>
+</html>

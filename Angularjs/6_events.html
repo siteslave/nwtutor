@@ -1,0 +1,41 @@
+<html ng-app="app">
+
+    <head>
+        <title>Hello world</title>
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="WelcomeCtrl">
+            <label for="">Your name: </label>
+            <input type="text" ng-model="name" size="20">
+            <button type="button" ng-click="showName()">Show name</button>
+            <button type="button" ng-click="setName('Marry')">Set name</button>
+            <button type="button" ng-click="resetName('John')">Reset name</button>
+            <br>
+            <span>{{ name }}</span>
+        </div>
+
+        <script>
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope) {
+                    $scope.name = 'John';
+
+                    // event function
+                    $scope.showName = function () {
+                        alert($scope.name);
+                    }
+
+                    $scope.setName = function (name) {
+                        $scope.name = name;
+                    }
+
+                    $scope.resetName = function (name) {
+                        $scope.name = name;
+                        alert('Name was resetted!');
+                    }
+                });
+        </script>
+    </body>
+
+</html>

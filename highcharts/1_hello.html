@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" >
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumX Template</title>
+
+        <link href="../vendor/lumx/dist/lumx.css" rel="stylesheet">
+        <link href="../vendor/mdi/css/materialdesignicons.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
+
+        <script src="../vendor/jquery/dist/jquery.js"></script>
+        <script src="../vendor/velocity/velocity.js"></script>
+        <script src="../vendor/moment/min/moment-with-locales.js"></script>
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/lumx/dist/lumx.js"></script>
+
+        <script src="../vendor/highcharts/highcharts.js"></script>
+        <script src="../vendor/highcharts-ng/dist/highcharts-ng.js"></script>
+
+    </head>
+    <body ng-controller="WelcomeCtrl">
+
+        <div flex-container="row" flex-gutter="24">
+
+            <div class="card p+" flex-item>
+                <highchart config="barConfig"></highchart>
+            </div>
+
+            <div class="card p+" flex-item>
+                <highchart config="lineConfig"></highchart>
+            </div>
+
+        </div>
+        <br><br>
+        <div flex-container="row" flex-gutter="24">
+
+            <div class="card p+" flex-item>
+                <highchart config="columnConfig"></highchart>
+            </div>
+
+            <div class="card p+" flex-item>
+                <highchart config="pieConfig"></highchart>
+            </div>
+
+        </div>
+
+
+        <script>
+            angular.module('app', ['lumx', 'highcharts-ng'])
+                .controller('WelcomeCtrl', function ($scope) {
+                    $scope.barConfig = {
+                          options: {
+                              chart: {
+                                  type: 'bar'
+                              },
+                              tooltip: {
+                                  style: {
+                                      padding: 10,
+                                      fontWeight: 'bold'
+                                  }
+                              }
+                          },
+                          series: [{
+                             data: [10, 15, 12, 8, 7]
+                          }],
+                          title: {
+                             text: 'Hello'
+                          },
+                          xAxis: {
+                              currentMin: 0,
+                              currentMax: 20,
+                              title: {text: 'values'}
+                          }
+                        };
+
+                    $scope.lineConfig = {
+                          options: {
+                              chart: {
+                                  type: 'line'
+                              },
+                              tooltip: {
+                                  style: {
+                                      padding: 10,
+                                      fontWeight: 'bold'
+                                  }
+                              }
+                          },
+                          series: [{
+                             data: [10, 15, 12, 8, 7]
+                          }],
+                          title: {
+                             text: 'Hello'
+                          },
+                          xAxis: {
+                              currentMin: 0,
+                              currentMax: 20,
+                              title: {text: 'values'}
+                          }
+                        };
+
+                    $scope.columnConfig = {
+                          options: {
+                              chart: {
+                                  type: 'column'
+                              },
+                              tooltip: {
+                                  style: {
+                                      padding: 10,
+                                      fontWeight: 'bold'
+                                  }
+                              }
+                          },
+                          series: [{
+                             data: [10, 15, 12, 8, 7]
+                          }],
+                          title: {
+                             text: 'Hello'
+                          },
+                          xAxis: {
+                              currentMin: 0,
+                              currentMax: 20,
+                              title: {text: 'values'}
+                          }
+                        };
+
+                    $scope.pieConfig = {
+                          options: {
+                              chart: {
+                                  type: 'pie'
+                              }
+                          },
+                          title: {
+                                text: 'Browser market shares January, 2015 to May, 2015'
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                        style: {
+                                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                        }
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: "Brands",
+                                colorByPoint: true,
+                                data: [{
+                                    name: "Microsoft Internet Explorer",
+                                    y: 56.33
+                                }, {
+                                    name: "Chrome",
+                                    y: 24.03,
+                                    sliced: true,
+                                    selected: true
+                                }, {
+                                    name: "Firefox",
+                                    y: 10.38
+                                }, {
+                                    name: "Safari",
+                                    y: 4.77
+                                }, {
+                                    name: "Opera",
+                                    y: 0.91
+                                }, {
+                                    name: "Proprietary or Undetectable",
+                                    y: 0.2
+                                }]
+                            }]
+                        };
+                });
+        </script>
+  </body>
+</html>

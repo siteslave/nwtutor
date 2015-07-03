@@ -1,0 +1,24 @@
+File: User.js
+
+module.exports = {
+    name: 'Satit',
+    getName: function () {
+        return this.name;
+    },
+    setName: function (name) {
+        this.name = name;
+    }
+};
+
+
+Run node REPL:
+
+    # node
+    > var user = require('./User');
+    > user
+    { name: 'Satit', getName: [Function], setName: [Function] }
+    > user.name
+    'Satit'
+    > user.setName('Monalisa');
+    > user.getName();
+    'Monalisa'

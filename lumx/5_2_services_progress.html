@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumX Template</title>
+
+        <link href="../vendor/lumx/dist/lumx.css" rel="stylesheet">
+        <link href="../vendor/mdi/css/materialdesignicons.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
+
+        <script src="../vendor/jquery/dist/jquery.js"></script>
+        <script src="../vendor/velocity/velocity.js"></script>
+        <script src="../vendor/moment/min/moment-with-locales.js"></script>
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/lumx/dist/lumx.js"></script>
+
+    </head>
+    <body ng-app="app">
+
+        <div class="card p+" ng-controller="WelcomeCtrl">
+            <button class="btn btn--m btn--blue btn--raised" ng-click="showLinear()" lx-ripple>Show linear</button>
+            <button class="btn btn--m btn--red btn--raised" ng-click="hideLinear()" lx-ripple>Hide linear</button>
+            <button class="btn btn--m btn--green btn--raised" ng-click="showCircle()" lx-ripple>Show circle</button>
+            <button class="btn btn--m btn--red btn--raised" ng-click="hideCircle()" lx-ripple>Hide circle</button>
+        </div>
+
+        <br>
+        <!-- class="progress-circular--is-small" -->
+        <!-- class="progress-linear--is-small" -->
+        <div flex-container="row">
+            <div flex-item>
+                <div id="progressCircle"></div>
+                <div id="progressLinear"></div>
+            </div>
+        </div>
+
+        <script>
+            angular.module('app', ['lumx'])
+                .controller('WelcomeCtrl', function ($scope, LxProgressService) {
+                    $scope.showLinear = function () {
+                        LxProgressService.linear.show('#C62828', '#progressLinear');
+                    }
+                    $scope.hideLinear = function () {
+                        LxProgressService.linear.hide();
+                    }
+                    $scope.showCircle = function () {
+                        LxProgressService.circular.show('#C62828', '#progressCircle');
+                    }
+                    $scope.hideCircle = function () {
+                        LxProgressService.circular.hide();
+                    }
+                });
+        </script>
+  </body>
+</html>

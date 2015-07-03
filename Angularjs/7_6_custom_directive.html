@@ -1,0 +1,31 @@
+<html ng-app="app">
+
+    <head>
+        <title>Directive</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+
+        <user first-name="Steve" last-name="Job"></user>
+        <div user first-name="Satit" last-name="rianpit"></div>
+        <div class="user" first-name="John" last-name="Terry"></div>
+        <script>
+            angular.module('app', [])
+                .directive('user', function () {
+                    return {
+                          restrict: 'AECM', //E = element, A = attribute, C = class
+                          replace: 'true',
+                          template: '<h3>Hello, {{ firstName }} {{ lastName }}</h3>',
+                          scope: {
+                              firstName: '@',
+                              lastName: '@'
+                          }
+                    };
+                })
+
+        </script>
+    </body>
+
+</html>

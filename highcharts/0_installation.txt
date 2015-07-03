@@ -1,0 +1,6 @@
+Install via bower:
+
+    # bower install highcharts highcharts-ng --save
+
+Add module to angular
+    angular.module('app', [..., 'highcharts-ng'])

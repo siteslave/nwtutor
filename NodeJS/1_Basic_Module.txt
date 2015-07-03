@@ -1,0 +1,28 @@
+Run
+    # node
+
+1. Basic OS module (https://nodejs.org/api/os.html)
+    # var os = require('os')
+    # os.tmpdir()
+    # os.hostname()
+    # os.type()
+    # os.platform()
+    # os.arch()
+    # os.release()
+    # os.uptime()
+    # os.loadavg()
+    # os.totalmem()
+    # os.freemem()
+    # os.cpus()
+2. Basic FileSystem module (https://nodejs.org/api/fs.html)
+    # var fs = require('fs');
+    # fs.writeFileSync('./hello.txt', 'Hello world');
+    # more hello.txt
+    
+    Async function
+
+    # fs.writeFile('./hello.txt', 'Hello world', function (err) {
+            if (err) {
+                console.log('Error!');
+            }
+        });

@@ -1,0 +1,17 @@
+1.  ติดตั้ง bower
+
+    # npm install -g bower
+
+2. รันคำสั่ง ดังนี้
+
+    # bower init
+
+3. กำหนด path สำหรับ vendor โดยสร้าง/แก้ไขไฟล์ .bowerrc ดังนี้
+
+    {
+        "directory": "vendor"
+    }
+
+4. ติดตั้ง
+
+    # bower install angular --save

@@ -1,0 +1,47 @@
+<html ng-app="app">
+
+    <head>
+        <title>Directive</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+
+        <div ng-controller="WelcomeCtrl">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Sex</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="p in people">
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.sex | sexName }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope) {
+                    $scope.people = [
+                        { name: 'Steve Job', sex: 1},
+                        { name: 'Marry Job', sex: 2},
+                        { name: 'Crystry Borwn', sex: 2},
+                    ];
+                })
+
+                .filter('sexName', function () {
+                    return function (sex) {
+                        return sex == '1' ? 'ชาย' : 'หญิง';
+                    }
+                });
+
+        </script>
+    </body>
+
+</html>

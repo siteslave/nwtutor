@@ -1,0 +1,55 @@
+<html ng-app="app">
+
+    <head>
+        <title>Routing</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+        <script src="../vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    </head>
+
+    <body>
+        <h1>My Application</h1>
+        <a href="#/">Main</a> |
+        <a ui-sref="about-info">Info</a> |
+        <a ui-sref="about-contact">Contact</a>
+
+        <hr>
+        <div ui-view></div>
+
+        <script>
+
+            angular.module('app', ['ui.router', 'app.controller.InfoCtrl'])
+                .config(function ($stateProvider, $urlRouterProvider) {
+                    $urlRouterProvider.otherwise('/main');
+
+                    $stateProvider
+                        .state('main', {
+                            url: '/main',
+                            templateUrl: 'templates/main2.html',
+                            controller: function ($scope) {
+                                $scope.fruits = ['Apple', 'Banana', 'Pie Apple'];
+                            }
+                        })
+                        .state('about-info', {
+                            url: '/about',
+                            templateUrl: 'templates/info2.html',
+                            controller: 'InfoCtrl'
+                        })
+                        .state('about-contact', {
+                            url: '/contact',
+                            templateUrl: 'templates/contact.html'
+                        });
+                });
+
+                angular.module('app.controller.InfoCtrl', [])
+                    .controller('InfoCtrl', function ($scope) {
+                        $scope.yourname = 'Steve Job';
+                        $scope.showName = function () {
+                            alert($scope.yourname);
+                        }
+                    });
+
+        </script>
+    </body>
+
+</html>

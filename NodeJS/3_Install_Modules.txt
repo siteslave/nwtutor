@@ -1,0 +1,23 @@
+Install module
+    How to install:
+    # npm install module_name
+
+Basic usage: (fs-extra)
+
+    # npm install fs-extra
+
+Run REPL command
+    > var fse = require('fs-extra');
+    undefined
+    > var config = {
+    ... host: 'localhost',
+    ... user: 'root',
+    ... password: '123456'
+    ... };
+    undefined
+    > fse.writeJson('./config.json', config, function (err) {
+    ... if (err) console.log(err);
+    ... else console.log('Success');
+    ... });
+    undefined
+    > Success

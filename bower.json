@@ -1,0 +1,23 @@
+{
+  "name": "Basic Node and Angular",
+  "version": "0.0.1",
+  "authors": [
+    "Satit Rianpit <rianpit@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angular-ui-router": "~0.2.15",
+    "lumx": "~0.3.59",
+    "highcharts": "~4.1.7",
+    "highcharts-ng": "~0.0.8",
+    "angular-ui-map": "~0.5.0"
+  }
+}

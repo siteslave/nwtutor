@@ -1,0 +1,27 @@
+<html ng-app="app">
+
+    <head>
+        <title>fiters</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="WelcomeCtrl">
+            <ul>
+            <!-- uppercase/lowercase/currency/orderBy/filter -->
+            <!-- orderBy for object only -->
+                <li ng-repeat="f in fruits">{{ f | uppercase }}</li>
+            </ul>
+        </div>
+        <script>
+
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope) {
+                    $scope.fruits = ['Orange', 'Banana', 'Potato', 'Apple'];
+                })
+
+        </script>
+    </body>
+
+</html>

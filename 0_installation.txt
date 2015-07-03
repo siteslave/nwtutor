@@ -1,0 +1,8 @@
+1. Install NodeJS
+2. Install bower
+    # npm install -g bower
+3. Install NodeJS modules
+    # npm install
+
+4. Running local web server
+    # npm start

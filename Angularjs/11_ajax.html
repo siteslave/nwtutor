@@ -1,0 +1,76 @@
+<html ng-app="app">
+
+    <head>
+        <title>Hello world</title>
+        <!-- 1. require angular  -->
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="WelcomeCtrl">
+
+            <button ng-click="getUser()">Get users</button>
+            <span ng-show="isLoading">Loading...</span>
+            <ul>
+                <li ng-repeat="u in users">{{ u.name }} - {{ u.email }}</li>
+            </ul>
+        </div>
+
+        <script>
+            angular.module('app', [])
+                .controller('WelcomeCtrl', function ($scope, WelcomeServ) {
+
+                    $scope.isLoading = false;
+
+                    $scope.getUser = function () {
+                        $scope.isLoading = true;
+                        WelcomeServ.getUser()
+                            .then(function (data) {
+                                $scope.users = data;
+                                $scope.isLoading = false;
+                            }, function (err) {
+                                console.log(err);
+                                $scope.isLoading = false;
+                            });
+                    }
+                })
+                .factory('WelcomeServ', function ($http, $q) {
+                    // api: http://jsonplaceholder.typicode.com
+                    return {
+                        getUser: function () {
+                            var url = 'http://jsonplaceholder.typicode.com/users';
+                            var q = $q.defer();
+                            /*
+                            $http.post(url, {id: xx, name: yyyy}).success().error();
+
+                            var options = {
+                                url: 'http://...',
+                                method: 'POST',
+                                data: {
+                                    id: xx,
+                                    name: 'yyyy'
+                                }
+                            };
+
+                            $http(options)
+                                .success()
+                                .error()
+                            */
+
+                            $http.get(url)
+                                .success(function (data) {
+                                    q.resolve(data);
+                                })
+                                .error(function (data, status) {
+                                    q.reject(status);
+                                });
+
+                            return q.promise;
+                        }
+                    }
+                });
+
+        </script>
+    </body>
+
+</html>

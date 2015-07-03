@@ -1,0 +1,49 @@
+<html ng-app="app">
+
+    <head>
+        <title>Hello world</title>
+        <script src="../vendor/angular/angular.js"></script>
+    </head>
+
+    <body>
+        <h1>Basic Angular Modules</h1>
+
+        <div ng-controller="WelcomeCtrl">
+            <br>
+            <label for="">Your name: </label>
+            <input type="text" ng-model="name" size="20">
+            <button type="button" ng-click="alert()">Show name!</button>
+            <br>
+            <span>{{ name }}</span>
+        </div>
+
+        <script>
+
+            angular.module('app', ['app2'])
+                .run(function ($rootScope) {
+                    $rootScope.name = 'Steve Job';
+                });
+
+            angular.module('app2', [])
+                .controller('WelcomeCtrl', function ($scope, $rootScope) {
+                    $scope.alert = function () {
+                        alert($scope.name);
+                    }
+                });
+
+            /*
+            Module definition.
+
+            angular.module('app', [])
+                .controller(...)
+                .factory(...)
+            //----------------------------------//
+            var app = angular.module('app', [])
+            app.controller(...)
+            app.factory(...)
+            app.filter(...)
+            */
+        </script>
+    </body>
+
+</html>
