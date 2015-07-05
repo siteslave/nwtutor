@@ -1,0 +1,10 @@
+Install via npm
+    # npm install express-generator -g
+
+Create new project:
+    # express myApp
+    # cd myApp
+    # npm install
+    # npm start
+
+    Server run on http://localhost:3000

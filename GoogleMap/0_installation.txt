@@ -1,2 +1,2 @@
 Install via bower:
-    # bower install angular-google-maps --save
+    # bower install angular-ui-map --save
