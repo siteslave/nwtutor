@@ -11,3 +11,8 @@
 Demo App:
 
     # git clone https://github.com/siteslave/nwmsu.git ihos
+
+Edit my.ini
+
+    [mysqld]
+    character-set-server=utf8
